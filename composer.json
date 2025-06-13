@@ -1,13 +1,19 @@
 {
-    "name": "php-amqplib/php-amqplib",
+    "name": "appwrite-labs/php-amqplib",
     "replace": {
-        "videlalvaro/php-amqplib": "self.version"
+        "videlalvaro/php-amqplib": "self.version",
+        "php-amqplib/php-amqplib": "self.version"
     },
     "type": "library",
-    "description": "Formerly videlalvaro/php-amqplib.  This library is a pure PHP implementation of the AMQP protocol. It's been tested against RabbitMQ.",
-    "keywords": ["rabbitmq", "message", "queue"],
-    "homepage": "https://github.com/php-amqplib/php-amqplib/",
+    "description": "Fork of php-amqplib with Swoole coroutine support. A pure PHP implementation of the AMQP protocol tested against RabbitMQ.",
+    "keywords": ["rabbitmq", "message", "queue", "swoole", "coroutine", "async"],
+    "homepage": "https://github.com/appwrite-labs/php-amqplib/",
     "authors": [
+        {
+            "name": "Appwrite Labs",
+            "email": "team@appwrite.io",
+            "role": "Fork Maintainer"
+        },
         {
             "name": "Alvaro Videla",
             "role": "Original Maintainer"
@@ -38,7 +44,11 @@
         "ext-curl": "*",
         "phpunit/phpunit": "^7.5|^9.5",
         "squizlabs/php_codesniffer": "^3.6",
-        "nategood/httpful": "^0.2.20"
+        "nategood/httpful": "^0.2.20",
+        "swoole/ide-helper": "^5.0"
+    },
+    "suggest": {
+        "ext-swoole": "For Swoole coroutine support"
     },
     "conflict": {
         "php": "7.4.0 - 7.4.1"
