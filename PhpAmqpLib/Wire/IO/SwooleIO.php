@@ -34,9 +34,13 @@ class SwooleIO extends AbstractIO
         $keepalive = false,
         $heartbeat = 0
     ) {
+        /*
+        TODO FUTURE enable this check
         if ($heartbeat !== 0 && ($read_write_timeout < ($heartbeat * 2))) {
             throw new \InvalidArgumentException('read_write_timeout must be at least 2x the heartbeat');
         }
+        */
+
         $this->host = $host;
         $this->port = $port;
         $this->connection_timeout = $connection_timeout;
