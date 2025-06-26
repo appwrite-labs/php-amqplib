@@ -2,6 +2,7 @@
 namespace PhpAmqpLib\Connection;
 
 use PhpAmqpLib\Wire\IO\SwooleIO;
+use Swoole\Coroutine;
 
 class AMQPSwooleConnection extends AbstractConnection
 {
@@ -71,5 +72,15 @@ class AMQPSwooleConnection extends AbstractConnection
 
         // save the params for the use of __clone, this will overwrite the parent
         $this->construct_params = func_get_args();
+    }
+
+    public function __destruct()
+    {
+        if (Coroutine::getCid() >= 0) {
+            parent::__destruct();
+            return;
+        }
+
+        \go(fn () => parent::__destruct());
     }
 }
